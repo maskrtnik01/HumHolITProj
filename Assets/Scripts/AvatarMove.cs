@@ -25,7 +25,7 @@ public class AvatarMove : MonoBehaviour
 
         RaycastHit hit;
         if (!Physics.SphereCast(transform.position, CollisionRadius,deltaWorld.normalized, out hit, CollisionDistance))
-            transform.Translate(deltaWorld, Space.World) ;
+            transform.Translate(deltaWorld, Space.World);
         
     }
 }
