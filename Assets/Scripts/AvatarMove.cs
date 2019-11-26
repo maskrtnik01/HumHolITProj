@@ -8,24 +8,39 @@ public class AvatarMove : MonoBehaviour
     public float MoveSpeed;
     public float CollisionRadius;
     public float CollisionDistance;
+    private Rigidbody body;
     void Start()
     {
-        
+        body = GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
     {
-        float deltaX = Input.GetAxis("Horizontal") * MoveSpeed;
-        float deltaZ = Input.GetAxis("Vertical") * MoveSpeed;
-        float deltaR = Input.GetAxis("Rotational") * RotationSpeed;
+        Vector3 deltaWorld;
+        if(SystemInfo.supportsGyroscope)
+        {
+            transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
+            //deltaWorld = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.LTouch) * MoveSpeed * 20;
+            //deltaWorld.y = 0;
+            deltaWorld = Vector3.forward * MoveSpeed;
+            body.AddForce(deltaWorld, ForceMode.VelocityChange);
+        }
+        else
+        {
+            float deltaX = Input.GetAxis("Horizontal") * MoveSpeed;
+            float deltaZ = Input.GetAxis("Vertical") * MoveSpeed;
+            float deltaR = Input.GetAxis("Rotational") * RotationSpeed;
 
-        Vector3 deltaWorld = transform.TransformDirection(deltaX, 0, deltaZ);
-        
-        transform.Rotate(0, deltaR, 0, Space.Self);
+            deltaWorld = transform.TransformDirection(deltaX, 0, deltaZ);
 
-        RaycastHit hit;
-        if (!Physics.SphereCast(transform.position, CollisionRadius,deltaWorld.normalized, out hit, CollisionDistance))
-            transform.Translate(deltaWorld, Space.World);
-        
+            
+        }
+        //RaycastHit hit;
+        //if (!Physics.SphereCast(transform.position, CollisionRadius, deltaWorld.normalized, out hit, CollisionDistance))
+        //    transform.Translate(deltaWorld, Space.World);
+
+    }
+    private void OnGUI()
+    {
     }
 }

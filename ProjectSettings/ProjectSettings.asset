@@ -167,7 +167,7 @@ PlayerSettings:
     Android: com.DefaultCompany.Rollerball
   buildNumber: {}
   AndroidBundleVersionCode: 1
-  AndroidMinSdkVersion: 16
+  AndroidMinSdkVersion: 21
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 0
   aotOptions: 
@@ -259,7 +259,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 1
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: '{dedicated}: Unity-build/user.keystore'
+  AndroidKeystoreName: '{dedicated}: Unity-build/user2.keystore'
   AndroidKeyaliasName: default
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0
@@ -267,7 +267,7 @@ PlayerSettings:
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 1
+  androidUseCustomKeystore: 0
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -407,7 +407,8 @@ PlayerSettings:
     - OpenVR
   - m_BuildTarget: Android
     m_Enabled: 1
-    m_Devices: []
+    m_Devices:
+    - Oculus
   - m_BuildTarget: Windows Store Apps
     m_Enabled: 1
     m_Devices: []
