@@ -20,8 +20,6 @@ public class AvatarMove : MonoBehaviour
         if(SystemInfo.supportsGyroscope)
         {
             transform.rotation = OVRInput.GetLocalControllerRotation(OVRInput.Controller.LTouch);
-            //deltaWorld = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.LTouch) * MoveSpeed * 20;
-            //deltaWorld.y = 0;
             deltaWorld = Vector3.forward * MoveSpeed;
             body.AddForce(deltaWorld, ForceMode.VelocityChange);
         }
