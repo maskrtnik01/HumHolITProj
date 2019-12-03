@@ -326,6 +326,7 @@ partial class OculusBuildApp : EditorWindow
 		gradleBuildProcess.OutputDataReceived += new DataReceivedEventHandler(
 			(s, e) =>
 			{
+                UnityEngine.Debug.Log(e.Data);
 				if (e != null && e.Data != null &&
 					e.Data.Length != 0 && e.Data.Contains("BUILD"))
 				{
